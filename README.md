@@ -1,5 +1,13 @@
 # React + Vite
 
+## Backend API
+
+The app uses the deployed Cloudtype API by default. To use a different backend,
+set `VITE_API_URL` to its `/todos` endpoint in your environment. For local
+development, copy `.env.example` to `.env.local` and update the value if needed.
+Set the same variable in your frontend hosting provider when deploying; Vite
+includes `VITE_` variables at build time.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

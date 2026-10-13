@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 
-const API_URL = 'http://localhost:5000/todos'
+const API_URL = (
+  import.meta.env.VITE_API_URL
+  || 'https://port-0-vibe-todo-backend-mv6e8mg2734ff697.sel3.cloudtype.app/todos'
+).replace(/\/+$/, '')
 
 function getLocalDateString(date = new Date()) {
   const year = date.getFullYear()
@@ -31,7 +34,7 @@ async function requestTodos(path = '', options = {}) {
       },
     })
   } catch {
-    throw new Error('백엔드 서버에 연결할 수 없습니다. localhost:5000 서버가 실행 중인지 확인해 주세요.')
+    throw new Error(`백엔드 서버(${API_URL})에 연결할 수 없습니다. 네트워크 연결과 서버 상태를 확인해 주세요.`)
   }
 
   let data
